@@ -1,0 +1,49 @@
+html {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+a {
+    font-size: 18px;
+}
+
+.layui-nav * {
+    font-size: 18px;
+}
+
+.layui-form-radio>* {
+    font-size: 18px;
+
+}
+.layui-table td, .layui-table th{
+    font-size: 18px;
+
+}
+body {
+    width: 100%;
+    height: 100%;
+}
+
+
+
+.page-conatiner {
+    height: 100%;
+    width: 100%;
+}
+
+/* footer */
+.footer-container {
+    width: calc(100% - 200px);
+    height: 100px;
+    padding: 100px;
+    background-color: #0B5EB2;
+    background-image: url(../img/bg4.png);
+    display: flex;
+}
+
+.contact-us {
+    width: 30%;
+    color: #fff;
+    margin-left: 10%;
+}

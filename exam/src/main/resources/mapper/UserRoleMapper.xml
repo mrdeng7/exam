@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.exam.dao.UserRoleDao">
+
+    <select id="findAllRolesByUserId" resultType="com.exam.po.RoleBean">
+        SELECT role.role_id, role.role_name
+        FROM `user_role` ur,  role
+        where ur.role_id = role.role_id
+        and ur.user_id = #{userId}
+    </select>
+
+
+</mapper>

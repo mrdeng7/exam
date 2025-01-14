@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.exam.dao.ExamsDao">
+
+    <select id="queryRecentExams" resultType="com.exam.entity.ExamsEntity">
+        SELECT
+            exams.exam_id as examId, exams.opening_hours as openingHours, exams.deadline, exams.duration,
+            exams.explain_info as explainInfo, exams.announce_the_result as announceTheResult,
+            exams.exam_paper_id as examPaperId, exam_paper.paper_name as paperName
+        FROM exams, exam_paper
+        WHERE exams.exam_paper_id = exam_paper.exam_paper_id
+            and exam_paper.`status` = 0 and exams.class_id LIKE CONCAT('%', #{classId}, '%')
+        ORDER BY exams.opening_hours DESC
+            <if test="pageSize != null and pageSize != -1">
+                limit #{pageIndex},#{pageSize}
+            </if>
+    </select>
+
+    <select id="queryExamPaperQuestionOfKey" resultType="com.exam.entity.ExamPaperQuestionOfKeyEntity">
+        SELECT epq.exam_paper_question_id as examPaperQuestionId, question.question_id as questionId, question.question_key as questionKey, question.question_type_id as questionTypeId
+        FROM `exam_paper_question` epq , question
+        WHERE epq.question_id = question.question_id
+        <if test="questionTypeIds != null">
+            and question.question_type_id in
+            <foreach collection="questionTypeIds" separator="," item="questionTypeId" open="(" close=")">
+                #{questionTypeId}
+            </foreach>
+        </if>
+        <if test="examPaperQuestionIds != null">
+            and epq.exam_paper_question_id in
+            <foreach collection="examPaperQuestionIds" separator="," item="examPaperQuestionId" open="(" close=")">
+                #{examPaperQuestionId}
+            </foreach>
+        </if>
+    </select>
+
+    <select id="queryExamsByAnswerSituationId" resultType="com.exam.po.ExamsBean">
+        SELECT exams.*
+        FROM answer_situation , exams
+        WHERE answer_situation.exam_id = exams.exam_id
+          and answer_situation.answer_situation_id = #{answerSituationId}
+
+    </select>
+
+</mapper>

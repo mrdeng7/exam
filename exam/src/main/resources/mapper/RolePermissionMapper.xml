@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.exam.dao.RolePermissionDao">
+
+    <resultMap type="com.exam.entity.RolePermissionEntity" id="rolePermissionMap">
+        <result property="roleId" column="role_id" jdbcType="INTEGER"/>
+        <result property="permissionId" column="permission_id" jdbcType="INTEGER"/>
+        <result property="permissionName" column="permission_name" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="findPermissionByRoleIds" resultMap="rolePermissionMap">
+        SELECT rp.role_id, p.permission_id, p.permission_name
+        FROM `role_permission` rp , permission p
+        WHERE rp.permission_id = p.permission_id
+        and rp.role_id in
+        <foreach collection="roleIds" separator="," item="roleId" open="(" close=")">
+            #{roleId}
+        </foreach>
+    </select>
+
+
+</mapper>

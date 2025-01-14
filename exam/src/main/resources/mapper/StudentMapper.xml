@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.exam.dao.StudentDao">
+
+    <select id="queryReferenceList" resultType="com.exam.po.StudentBean">
+        select student.*
+        from exams, student
+        WHERE exams.class_id = student.class_id and  exams.exam_id = #{examId}
+        <if test="pageSize != null and pageSize != -1">
+            limit #{start},#{pageSize}
+        </if>
+    </select>
+
+    <select id="countReferenceList" resultType="java.lang.Integer">
+        select count(1)
+        from exams, student
+        WHERE exams.class_id = student.class_id and  exams.exam_id = #{examId}
+    </select>
+
+
+</mapper>

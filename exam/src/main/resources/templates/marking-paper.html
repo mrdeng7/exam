@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>计算机组成原理考试系统</title>
+    <link rel="stylesheet" href="../static/js/layui-v2.9.7/layui/css/layui.css">
+    <link rel="stylesheet" href="../static/css/common.css">
+    <script src="../static/js/layui-v2.9.7/layui/layui.js"></script>
+    <script src="../static/js/jquery-3.5.1/jquery-3.5.1.min.js"></script>
+    <style type="text/css">
+        html {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        .page-container {
+            height: 100%;
+            width: 100%;
+        }
+
+        .menu-container {
+            height: 80px;
+            width: 100%;
+            display: flex;
+            position: relative;
+            background-color: rgb(250, 250, 250);
+        }
+
+        .layout-navbar {
+            height: 80px;
+            width: 400px;
+            padding: 0 20px;
+        }
+
+        .navbar-title {
+            line-height: 80px;
+            margin-left: 100px;
+            font-size: 20px;
+            width: 300px;
+        }
+
+        .login-area {
+            width: 160px;
+            height: 50px;
+            position: absolute;
+            right: 40px;
+            bottom: 0px;
+            color: #666;
+            z-index: 999;
+            font-size: 18px;
+        }
+
+        .logo {
+            float: left;
+            width: 80px;
+            height: 80px;
+            background-size: 100%;
+            background-image: url(../static/img/logo.jpg);
+        }
+
+        .question-container {
+            width: 100%;
+            height: calc(100% - 80px);
+        }
+
+        .select-student {
+            width: 100%;
+            height: 60px;
+            padding: 10px 0;
+        }
+
+        .exam-content {
+            width: 100%;
+            height: calc(100% - 80px);
+            display: flex;
+        }
+
+        #select_options {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .middle-side {
+            width: 60%;
+            text-align: left;
+            padding: 5% 50px;
+
+        }
+
+        .right-side {
+            /* width: 20%; */
+            padding: 5%;
+        }
+
+        .question-type {
+            color: #666;
+            font-size: 16px;
+            padding: 3px 55px;
+        }
+
+        .question-area {
+            font-size: 20px;
+        }
+
+        .options-area {
+
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-container">
+        <!-- 菜单 -->
+        <div class="menu-container">
+            <div class="layout-navbar">
+                <div class="logo"></div>
+                <div class="navbar-title">计算机组成原理考试系统</div>
+            </div>
+            <ul class="layui-nav layui-bg-gray" style="line-height:80px;">
+                <li class="layui-nav-item"><a href="./index.html">首页</a></li>
+                <li class="layui-nav-item" id="practice_center" style="display: none;"> <a href="javascript:;">练习题库</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="./question-bank.html?param=1">按模块题型</a></dd>
+                        <dd><a href="./question-bank.html?param=2">按知识点</a></dd>
+                        <dd><a href=" ./question-bank.html?param=3">按推荐练习</a></dd>
+                        <dd><a href="./question-bank.html?param=5">随机练习</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item" id="exam_center" style="display: none;"><a href="./exam-list.html">考试中心</a>
+                </li>
+                <li class="layui-nav-item" id="test_paper_center" style="display: none;"> <a
+                        href="javascript:;">试卷中心</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="./test-paper.html">试卷发布</a></dd>
+                        <dd><a href="./paper-list.html">阅卷中心</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item" id="review_question" style="display: none;"><a
+                        href="./review-question.html">错题回顾</a></li>
+                <li class="layui-nav-item"><a href="http://10.20.55.112:8080/home">教学资源平台</a></li>
+            </ul>
+            <div class="login-area" id="login_area">
+                <a href="./login.html" style="margin-right: 30px;">登录</a>
+                <a href="./login.html" style="margin-right: 30px;">注册</a>
+            </div>
+            <div class="login-area" id="user_area">
+            </div>
+        </div>
+        <div class="select-student">
+            <div class="layui-form" style="width: 60%;margin:0 auto;">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">学生：</label>
+                    <div class="layui-input-inline" style="width: calc(100% - 200px);">
+                        <select id="select_student">
+                        </select>
+                    </div>
+                    <div class="layui-form-mid" style="padding: 0!important;">
+                        <button type="button" class="layui-btn layui-btn-normal " onclick="initPaperInfo()">选择</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="question-container">
+
+            <div class="exam-content">
+                <div class="middle-side" id="select_area">
+                    <div class="question-area" id="select_title"></div>
+                    <div class="options-area">
+                        <div class="layui-form">
+                            <div class="layui-form-item" id="select_options">
+                            </div>
+                            <div class="layui-form-item correct-answer" style="margin-top: 50px;color: #16b777;">
+                            </div>
+                            <div class="layui-form-item" style="margin-top: 50px;">
+                                <button class="layui-btn layui-btn-radius layui-btn-normal prev-btn" lay-submit
+                                    lay-filter="prev_question">上一题</button>
+                                <button class="layui-btn layui-btn-radius layui-btn-normal next-btn" lay-submit
+                                    lay-filter="next_question">下一题</button>
+                                <button class="layui-btn layui-btn-radius layui-btn-normal submit-all" lay-submit
+                                    lay-filter="submit_all">提交</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="middle-side" id="judge_area">
+                    <div class="question-area" id="judge_title"></div>
+                    <div class="options-area">
+                        <div class="layui-form">
+                            <div class="layui-form-item" id="judge_options">
+                            </div>
+                            <div class="layui-form-item correct-answer" style="margin-top: 50px;color: #16b777;">
+                            </div>
+                            <div class="layui-form-item" style="margin-top: 50px;">
+                                <button class="layui-btn layui-btn-radius layui-btn-normal prev-btn" lay-submit
+                                    lay-filter="prev_question">上一题</button>
+                                <button class="layui-btn layui-btn-radius layui-btn-normal next-btn" lay-submit
+                                    lay-filter="next_question">下一题</button>
+                                <button class="layui-btn layui-btn-radius layui-btn-normal submit-all" lay-submit
+                                    lay-filter="submit_all">提交</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="middle-side" id="blanks_area">
+                    <div class="question-area" id="blanks_title"></div>
+                    <div class="options-area">
+                        <div class="layui-form">
+                            <div class="layui-form-item" id="blanks_textarea">
+                            </div>
+                            <div class="layui-form-item" style="margin-top: 50px;">
+                                <label class="layui-form-label" style="text-align: left;">得分：</label>
+                                <div class="layui-input-inline" id="blanks_score_input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item correct-answer" style="margin-top: 50px;color: #16b777;">
+                            </div>
+                            <div class="layui-form-item" style="margin-top: 50px;">
+                                <button class="layui-btn layui-btn-radius layui-btn-normal prev-btn" lay-submit
+                                    lay-filter="prev_question">上一题</button>
+                                <button class="layui-btn layui-btn-radius layui-btn-normal next-btn" lay-submit
+                                    lay-filter="next_question">下一题</button>
+                                <button class="layui-btn layui-btn-radius layui-btn-normal submit-all" lay-submit
+                                    lay-filter="submit_all">提交</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="middle-side" id="answer_area">
+                    <div class="question-area" id="answer_title"></div>
+                    <div class="options-area">
+                        <div class="layui-form">
+                            <div class="layui-form-item" id="answer_textarea">
+                            </div>
+                            <div class="layui-form-item" style="margin-top: 50px;">
+                                <label class="layui-form-label" style="text-align: left;">得分：</label>
+                                <div class="layui-input-inline" id="answer_score_input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item correct-answer" style="margin-top: 50px;color: #16b777;">
+                            </div>
+                            <div class="layui-form-item" style="margin-top: 50px;">
+                                <button class="layui-btn layui-btn-radius layui-btn-normal prev-btn" lay-submit
+                                    lay-filter="prev_question">上一题</button>
+                                <button class="layui-btn layui-btn-radius layui-btn-normal next-btn" lay-submit
+                                    lay-filter="next_question">下一题</button>
+                                <button class="layui-btn layui-btn-radius layui-btn-normal submit-all" lay-submit
+                                    lay-filter="submit_all">提交</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="right-side" id="right_side">
+                    <table id="exam_info" lay-filter="exam_info"></table>
+                </div>
+            </div>
+            <input type="hidden" id="type">
+        </div>
+    </div>
+    <script type="text/html" id="toolEvent">
+        <a class="layui-btn layui-btn-xs" lay-event="toQuestion">查看</a>
+      </script>
+    <script src="../static/js/common.js"></script>
+    <script>
+        initMenu();
+        getuserName();
+        //JS 
+        layui.use(['form', 'layer'], function () {
+            var layer = layui.layer, $ = layui.$, form = layui.form;
+            var table = layui.table;
+            let studentList = [];
+            let questionList = [];
+            let currentQuestion = {};
+            let questionIndex = 0;
+
+            hiddenQuestion();
+            initStudentList();
+
+            function initStudentList() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const examId = urlParams.get('id');
+                const data = {
+                    "examId": examId,
+                    "pageIndex": 0,
+                    "pageSize": -1,
+                    "examined": true
+                };
+                studentList = [];
+                $('#select_student').empty();
+                $.ajax({
+                    // url: "http://3e7757722x.vicp.fun/exam/queryReferenceList",
+                    url: "/exam/queryReferenceList",
+                    type: 'POST',
+                    contentType: "application/json",
+                    data: JSON.stringify(data),
+                    dataType: 'json',
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader("Authorization", sessionStorage.getItem("token"));
+                    },
+                    success: function (res) {
+                        layer.closeAll();
+                        if (res['code'] == 1) {
+                            if (!res.data) {
+                                layer.msg(res.msg, { icon: 2 });
+                            }
+                            studentList = res.data || []
+                            studentList.forEach(item => {
+                                $('#select_student').append(`<option value="${item.answerSituationId}">${item.studentName}</option>`)
+                            });
+                            $('#select_student').val('');
+                            form.render();
+                        } else {
+                            layer.msg(res.msg, { icon: 2 });
+                        }
+                    },
+                    error(err) {
+                        layer.closeAll();
+                        layer.msg("获取失败！", { icon: 2 });
+                    }
+                });
+            }
+            //查询试卷
+            window.initPaperInfo = function () {
+                if ($('#select_student').val() == '') {
+                    layer.msg("请选择学生！", { icon: 2 });
+                    return false;
+                }
+                const data = {
+                    "answerSituationId": $('#select_student').val(),
+                    "pageIndex": 0,
+                    "pageSize": -1
+                };
+                questionList = [];
+                $.ajax({
+                    // url: "http://3e7757722x.vicp.fun/exam/showExamsPaperInfo",
+                    url: "/exam/showExamsPaperInfo",
+                    type: 'POST',
+                    contentType: "application/json",
+                    data: JSON.stringify(data),
+                    dataType: 'json',
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader("Authorization", sessionStorage.getItem("token"));
+                    },
+                    success: function (res) {
+                        layer.closeAll();
+                        if (res['code'] == 1) {
+                            if (!res.data) {
+                                layer.msg(res.msg, { icon: 2 });
+                            }
+                            (res.data || []).forEach(item => {
+                                (item.examsPaperAnswerDetails || []).forEach((question, index) => {
+                                    question.questionTypeId = item.questionTypeId;
+                                    question.questionTypeName = item.questionTypeName;
+                                    question.scoreForEachQuestion = item.scoreForEachQuestion;
+                                    questionList.push(question)
+                                })
+                            });
+                            questionList = questionList.map((item, index) => {
+                                item.status = 0;
+                                item.index = index + 1;
+                                item.answer = '';
+                                return item
+                            })
+                            if (questionList.length > 0) {
+                                currentQuestion = questionList[0];
+                                initQuestion(currentQuestion);
+                                $('#right_side').show();
+                                table.render({
+                                    elem: '#exam_info', // 绑定元素选择器
+                                    id: 'exam_info',
+                                    data: questionList,
+                                    width: 385,
+                                    height: 500,
+                                    cols: [
+                                        [
+                                            { field: 'index', width: 80, title: '序号' },
+                                            { field: 'questionTypeName', width: 100, title: '题型' },
+                                            {
+                                                field: "status", width: 120, title: "状态", templet: function (d) {
+                                                    if (d.questionTypeName == '选择题' || d.questionTypeName == '判断题') {
+                                                        return '<span> 自动批阅 </span>';
+                                                    }
+                                                    if (d.status == 0) {
+                                                        return '<span> 未批阅 </span>';
+                                                    } else if (d.status == 1) {
+                                                        return '<span> 已批阅 </span>';
+                                                    }
+                                                }
+                                            },
+                                            { field: 'operate', width: 80, title: '操作', toolbar: "#toolEvent" }
+                                        ]
+                                    ]
+                                });
+                            }
+                        } else {
+                            layer.msg(res.msg, { icon: 2 });
+                        }
+                    },
+                    error(err) {
+                        layer.closeAll();
+                        layer.msg("获取失败！", { icon: 2 });
+                    }
+                });
+            }
+            //跳转题目
+            table.on('tool(exam_info)', function (obj) {
+                switch (obj.event) {
+                    case 'toQuestion':
+                        questionIndex = obj.data.index - 1;
+                        currentQuestion = questionList[obj.data.index - 1];
+                        initQuestion(currentQuestion);
+                        break;
+                };
+            });
+            //隐藏所有题
+            function hiddenQuestion() {
+                $('#select_area').hide();
+                $('#judge_area').hide();
+                $('#blanks_area').hide();
+                $('#answer_area').hide();
+                $('#right_side').hide();
+            }
+            //初始化题目
+            function initQuestion(question) {
+                $('#select_area').hide();
+                $('#judge_area').hide();
+                $('#blanks_area').hide();
+                $('#answer_area').hide();
+                $('#select_options').empty();
+                $('#judge_options').empty();
+                $('#blanks_textarea').empty();
+                $('#answer_textarea').empty();
+
+                if (question.questionTypeId === 1) {
+                    $('#select_title').text(`${question.index}.${question.question}`);
+                    question.optionInfos?.forEach(item => {
+                        $('#select_options').append(`<input type="radio" name="options" value="${item.content}" lay-filter="demo-radio-filter" title="${item.optionNumber}.${item.content}">`);
+                    })
+                    $('#select_area').show();
+                } else if (question.questionTypeId === 2) {
+                    $('#judge_title').text(`${question.index}.${question.question}`);
+                    question.optionInfos?.forEach(item => {
+                        $('#judge_options').append(`<input type="radio" name="options" value="${item.content}" lay-filter="demo-radio-filter" title="${item.optionNumber}.${item.content}">`);
+                    })
+                    $('#judge_area').show();
+                } else if (question.questionTypeId === 3) {
+                    $('#blanks_title').text(`${question.index}.${question.question}`);
+                    $('#blanks_textarea').append(`<textarea name="options" placeholder="请输入答案" class="layui-textarea"></textarea>`);
+                    $('#blanks_score_input').empty()
+                    $('#blanks_score_input').append(`<input type="number" id="blanks_score" lay-affix="number" placeholder="请输入得分，满分为${question.scoreForEachQuestion}分" step="0.1" max="${question.scoreForEachQuestion}" min="0" class="layui-input">`);
+                    $('#blanks_area').show();
+                    $('#blanks_score').val(question.score);
+                    $("#blanks_score").on("input", changeVal);
+                } else if (question.questionTypeId === 4) {
+                    $('#answer_title').text(`${question.index}.${question.question}`);
+                    $('#answer_textarea').append(`<textarea name="options" placeholder="请输入答案" class="layui-textarea"></textarea>`);
+                    $('#answer_score_input').empty()
+                    $('#answer_score_input').append(`<input type="number" id="anwser_score" lay-affix="number" placeholder="请输入得分，满分为${question.scoreForEachQuestion}分" step="0.1" max="${question.scoreForEachQuestion}" min="0" class="layui-input">`);
+                    $('#answer_area').show();
+                    $('#anwser_score').val(question.score);
+                    $("#anwser_score").on("input", changeVal);
+                }
+
+                //显示正确答案
+                if (question.questionTypeId === 1 || question.questionTypeId === 2) {
+                    $(`input[name="options"][value='${currentQuestion.questionKeyByUser}']`).prop('checked', true);
+                    $('input[name=options]').prop("disabled", true);
+                    form.render('radio'); // 更新渲染，显示为选中状态
+                } else {
+                    $(`textarea[name="options"]`).val(currentQuestion.questionKeyByUser);
+                    $('textarea[name=options]').prop("readonly", true);
+                    //设置答案不可修改
+                    $(".show-answer").prop("disabled", true);
+                }
+                $('.correct-answer').text(`正确答案：${currentQuestion.questionKey}`);
+
+                //上一题，下一题按钮显示控制
+                $('.next-btn').show();
+                $('.prev-btn').show();
+                $('.submit-all').hide();
+                if (questionIndex === 0) {
+                    $('.prev-btn').hide();
+                }
+                if (questionIndex === questionList.length - 1) {
+                    $('.next-btn').hide();
+                    $('.submit-all').show();
+                }
+            }
+            function changeVal(e) {
+                currentQuestion.score = e.delegateTarget.value;
+                currentQuestion.status = e.delegateTarget.value !== '' ? 1 : 0;
+                table.reloadData('exam_info');
+            }
+            //下一题
+            form.on('submit(next_question)', function (data) {
+                //切换下一题
+                questionIndex++;
+                currentQuestion = questionList[questionIndex];
+                initQuestion(currentQuestion);
+            });
+            //下一题
+            form.on('submit(prev_question)', function (data) {
+                questionIndex--;
+                currentQuestion = questionList[questionIndex];
+                initQuestion(currentQuestion);
+            });
+            //提交 
+            function submitExam() {
+                layer.load();
+                // 解析URL参数
+                const urlParams = new URLSearchParams(window.location.search);
+                // 获取名为'param'的参数
+                const paramValue = urlParams.get('param');
+                const examId = urlParams.get('id');
+                const scoringSituations = [];
+                questionList.forEach(ques => {
+                    if ([3, 4].includes(ques.questionTypeId)) {
+                        scoringSituations.push({
+                            "answerDetailId": ques.answerDetailId,
+                            "score": ques.score
+                        })
+                    }
+                })
+                const params = {
+                    "answerSituationId": $('#select_student').val(),
+                    "scoringSituations": scoringSituations
+                };
+                //校验正确答案
+                $.ajax({
+                    // url: "http://3e7757722x.vicp.fun/exam/markingPapers",
+                    url: "/exam/markingPapers",
+                    type: 'POST',
+                    contentType: "application/json",
+                    data: JSON.stringify(params),
+                    dataType: 'json',
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader("Authorization", sessionStorage.getItem("token"));
+                    },
+                    success: function (res) {
+                        layer.closeAll();
+                        if (res['code'] == 1) {
+                            layer.msg('考试提交成功！,将在三秒后跳转', { icon: 1 });
+                            setTimeout(function () {
+                                window.location.href = `./paper-list.html`;
+                            }, 3000)
+                        } else {
+                            layer.msg(res.msg, { icon: 2 });
+                        }
+                    },
+                    error(err) {
+                        layer.closeAll();
+                        layer.msg("提交失败！", { icon: 2 });
+                    }
+                });
+            }
+            form.on('submit(submit_all)', function (data) {
+                // 确认是否提交
+                const flag = questionList.some(item => {
+                    if (item.questionTypeId == 3 || item.questionTypeId == 4) {
+                        return item.status === 0
+                    } else {
+                        return false
+                    }
+                })
+                if (flag) {
+                    layer.msg('存在题目未批阅！', { icon: 2 });
+                } else {
+                    submitExam();
+                }
+            })
+        });
+    </script>
+</body>
+
+</html>

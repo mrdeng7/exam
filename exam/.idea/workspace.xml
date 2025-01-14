@@ -1,0 +1,595 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="68e7ad53-516e-4bf5-be97-e6dd179e40f7" name="Changes" comment="fix: 调整从session中获取用户信息" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="HTML File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\maven\repository" />
+        <option name="mavenHome" value="D:/maven/apache-maven-3.9.3" />
+        <option name="userSettingsFile" value="D:\maven\apache-maven-3.9.3\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="skipTests" value="true" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2e4g7FDZeKBFsoHHY1DZyBctFNJ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.CodeGenerator.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TextSimilarityComparisonUtil.executor&quot;: &quot;Debug&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Maven.exam [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.exam [install].executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.OnlineExamApplication.executor&quot;: &quot;Debug&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;F:/test/exam&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;项目&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;654816f85dfe2115674e7115c7d1ea51&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
+  }
+}</component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Users\worker\IdeaProjects\exam\src\main\resources\templates" />
+      <recent name="E:\Users\worker\IdeaProjects\exam\src\main\resources\static\js\manage" />
+      <recent name="E:\Users\worker\IdeaProjects\exam\src\main\resources\static" />
+      <recent name="E:\Users\worker\IdeaProjects\exam\src\main\java\com\exam\util" />
+      <recent name="E:\Users\worker\IdeaProjects\exam\src\main\resources" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.exam.dto" />
+      <recent name="com.exam.vo" />
+      <recent name="com.exam.service" />
+      <recent name="com.exam.service.impl" />
+      <recent name="com.exam.dao" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.OnlineExamApplication">
+    <configuration name="QuestionServiceTest (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.exam.service.QuestionServiceTest" />
+      <module name="exam" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.exam.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="QuestionServiceTest (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.exam.service.QuestionServiceTest" />
+      <module name="exam" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.exam.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="QuestionServiceTest (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.exam.service.QuestionServiceTest" />
+      <module name="exam" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.exam.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="QuestionServiceTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.exam.service.QuestionServiceTest" />
+      <module name="exam" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.exam.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="QuestionServiceTest.transText" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="exam" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.exam.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.exam.service" />
+      <option name="MAIN_CLASS_NAME" value="com.exam.service.QuestionServiceTest" />
+      <option name="METHOD_NAME" value="transText" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OnlineExamApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="exam" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.exam.OnlineExamApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.QuestionServiceTest.transText" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="68e7ad53-516e-4bf5-be97-e6dd179e40f7" name="Changes" comment="" />
+      <created>1711169096738</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1711169096738</updated>
+      <workItem from="1711169098833" duration="15740000" />
+      <workItem from="1711281440638" duration="13711000" />
+      <workItem from="1711368821256" duration="10393000" />
+      <workItem from="1711502971039" duration="4121000" />
+      <workItem from="1711515260194" duration="7961000" />
+      <workItem from="1711590332861" duration="72000" />
+      <workItem from="1711590675780" duration="8384000" />
+      <workItem from="1711795558951" duration="1036000" />
+      <workItem from="1712148291099" duration="6364000" />
+      <workItem from="1712453609194" duration="26898000" />
+      <workItem from="1712541023023" duration="7274000" />
+      <workItem from="1712554876740" duration="18708000" />
+      <workItem from="1712629412556" duration="12023000" />
+      <workItem from="1712721150319" duration="3131000" />
+      <workItem from="1712742904292" duration="616000" />
+      <workItem from="1712750529436" duration="2884000" />
+      <workItem from="1712800543644" duration="49000" />
+      <workItem from="1712803489142" duration="3719000" />
+      <workItem from="1712822918103" duration="458000" />
+      <workItem from="1712976522984" duration="720000" />
+      <workItem from="1713145265218" duration="782000" />
+      <workItem from="1713186435179" duration="7538000" />
+      <workItem from="1713199915566" duration="6696000" />
+      <workItem from="1713253711605" duration="115000" />
+      <workItem from="1713253842579" duration="1169000" />
+      <workItem from="1713255028703" duration="74000" />
+      <workItem from="1713255119802" duration="1693000" />
+      <workItem from="1713258007368" duration="661000" />
+      <workItem from="1713258687274" duration="724000" />
+      <workItem from="1713259429171" duration="115000" />
+      <workItem from="1713259561038" duration="330000" />
+      <workItem from="1713259966913" duration="14062000" />
+      <workItem from="1713409011970" duration="3442000" />
+      <workItem from="1713493487877" duration="482000" />
+      <workItem from="1713494208024" duration="9193000" />
+      <workItem from="1713580340082" duration="8968000" />
+      <workItem from="1713705065563" duration="1060000" />
+      <workItem from="1713707692360" duration="4571000" />
+      <workItem from="1713766557735" duration="1119000" />
+      <workItem from="1713768337361" duration="14868000" />
+      <workItem from="1713803410182" duration="320000" />
+      <workItem from="1713803748975" duration="1508000" />
+      <workItem from="1713837162221" duration="2254000" />
+      <workItem from="1713852285108" duration="6834000" />
+      <workItem from="1713887839958" duration="1418000" />
+      <workItem from="1713895916804" duration="999000" />
+      <workItem from="1713920618358" duration="190000" />
+      <workItem from="1713920878891" duration="22932000" />
+      <workItem from="1713976598556" duration="7104000" />
+      <workItem from="1714021467577" duration="19669000" />
+    </task>
+    <task id="LOCAL-00001" summary="init">
+      <option name="closed" value="true" />
+      <created>1711376182047</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1711376182047</updated>
+    </task>
+    <task id="LOCAL-00002" summary="init">
+      <option name="closed" value="true" />
+      <created>1711376311623</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1711376311623</updated>
+    </task>
+    <task id="LOCAL-00003" summary="feat： 增加注释">
+      <option name="closed" value="true" />
+      <created>1711376550184</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1711376550184</updated>
+    </task>
+    <task id="LOCAL-00004" summary="feat： 增加mysql的配置信息">
+      <option name="closed" value="true" />
+      <created>1711376593895</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1711376593895</updated>
+    </task>
+    <task id="LOCAL-00005" summary="feat： 增加mysql的配置信息">
+      <option name="closed" value="true" />
+      <created>1711376617957</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1711376617957</updated>
+    </task>
+    <task id="LOCAL-00006" summary="feat: 增加文件目录">
+      <option name="closed" value="true" />
+      <created>1711376936041</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1711376936041</updated>
+    </task>
+    <task id="LOCAL-00007" summary="feat: 增加学生、老师实体类">
+      <option name="closed" value="true" />
+      <created>1711381146404</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1711381146404</updated>
+    </task>
+    <task id="LOCAL-00008" summary="feat: 增加登录相关逻辑">
+      <option name="closed" value="true" />
+      <created>1711382762444</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1711382762444</updated>
+    </task>
+    <task id="LOCAL-00009" summary="feat: 增加权限获取的逻辑">
+      <option name="closed" value="true" />
+      <created>1711383213688</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1711383213688</updated>
+    </task>
+    <task id="LOCAL-00010" summary="feat: 增加权限获取的逻辑">
+      <option name="closed" value="true" />
+      <created>1711383334060</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1711383334060</updated>
+    </task>
+    <task id="LOCAL-00011" summary="fix: 调整静态页面的访问路径">
+      <option name="closed" value="true" />
+      <created>1711503257525</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1711503257525</updated>
+    </task>
+    <task id="LOCAL-00012" summary="feat: 调整登录逻辑，适配学校">
+      <option name="closed" value="true" />
+      <created>1711516418630</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1711516418630</updated>
+    </task>
+    <task id="LOCAL-00013" summary="feat: 增加选项bean">
+      <option name="closed" value="true" />
+      <created>1711543989782</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1711543989782</updated>
+    </task>
+    <task id="LOCAL-00014" summary="feat: 增加练习题">
+      <option name="closed" value="true" />
+      <created>1711589661085</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1711589661086</updated>
+    </task>
+    <task id="LOCAL-00015" summary="feat: 增加班级查询接口">
+      <option name="closed" value="true" />
+      <created>1711627806682</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1711627806682</updated>
+    </task>
+    <task id="LOCAL-00016" summary="feat: 增加用户新增接口">
+      <option name="closed" value="true" />
+      <created>1711628936252</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1711628936252</updated>
+    </task>
+    <task id="LOCAL-00017" summary="fix: 修改答案校验的逻辑">
+      <option name="closed" value="true" />
+      <created>1711796527004</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1711796527004</updated>
+    </task>
+    <task id="LOCAL-00018" summary="fix: 修改msg 默认为 &quot;&quot;">
+      <option name="closed" value="true" />
+      <created>1712158572766</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1712158572766</updated>
+    </task>
+    <task id="LOCAL-00019" summary="fix: 修改msg 默认为 &quot;&quot;">
+      <option name="closed" value="true" />
+      <created>1712158580368</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1712158580368</updated>
+    </task>
+    <task id="LOCAL-00020" summary="fix: 保留小数点后2位">
+      <option name="closed" value="true" />
+      <created>1712158746873</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1712158746873</updated>
+    </task>
+    <task id="LOCAL-00021" summary="fix: 增加注释">
+      <option name="closed" value="true" />
+      <created>1712472213190</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1712472213190</updated>
+    </task>
+    <task id="LOCAL-00022" summary="feat: 增加题型查询接口">
+      <option name="closed" value="true" />
+      <created>1712483569123</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1712483569123</updated>
+    </task>
+    <task id="LOCAL-00023" summary="feat: 增加html">
+      <option name="closed" value="true" />
+      <created>1712490195361</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1712490195362</updated>
+    </task>
+    <task id="LOCAL-00024" summary="feat: 增加html">
+      <option name="closed" value="true" />
+      <created>1712574578844</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1712574578844</updated>
+    </task>
+    <task id="LOCAL-00025" summary="fix: 调整管理页面">
+      <option name="closed" value="true" />
+      <created>1712656822192</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1712656822192</updated>
+    </task>
+    <task id="LOCAL-00026" summary="fix: 调整管理页面">
+      <option name="closed" value="true" />
+      <created>1712664937166</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1712664937166</updated>
+    </task>
+    <task id="LOCAL-00027" summary="fix: 调整 pageindex">
+      <option name="closed" value="true" />
+      <created>1712665425271</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1712665425271</updated>
+    </task>
+    <task id="LOCAL-00028" summary="fix: 调整 pageindex">
+      <option name="closed" value="true" />
+      <created>1712666553728</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1712666553728</updated>
+    </task>
+    <task id="LOCAL-00029" summary="fix: 调整 判断题需要查询选项">
+      <option name="closed" value="true" />
+      <created>1712724943937</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1712724943937</updated>
+    </task>
+    <task id="LOCAL-00030" summary="fix: 调整 判断题需要查询选项">
+      <option name="closed" value="true" />
+      <created>1712755318926</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1712755318926</updated>
+    </task>
+    <task id="LOCAL-00031" summary="fix: 调整从session中获取用户信息">
+      <option name="closed" value="true" />
+      <created>1712805090547</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1712805090547</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
+    <MESSAGE value="init" />
+    <MESSAGE value="feat： 增加注释" />
+    <MESSAGE value="feat： 增加mysql的配置信息" />
+    <MESSAGE value="feat: 增加文件目录" />
+    <MESSAGE value="feat: 增加学生、老师实体类" />
+    <MESSAGE value="feat: 增加登录相关逻辑" />
+    <MESSAGE value="feat: 增加权限获取的逻辑" />
+    <MESSAGE value="fix: 调整静态页面的访问路径" />
+    <MESSAGE value="feat: 调整登录逻辑，适配学校" />
+    <MESSAGE value="feat: 增加选项bean" />
+    <MESSAGE value="feat: 增加练习题" />
+    <MESSAGE value="feat: 增加班级查询接口" />
+    <MESSAGE value="feat: 增加用户新增接口" />
+    <MESSAGE value="fix: 修改答案校验的逻辑" />
+    <MESSAGE value="fix: 修改msg 默认为 &quot;&quot;" />
+    <MESSAGE value="fix: 保留小数点后2位" />
+    <MESSAGE value="fix: 增加注释" />
+    <MESSAGE value="feat: 增加题型查询接口" />
+    <MESSAGE value="feat: 增加html" />
+    <MESSAGE value="fix: 调整管理页面" />
+    <MESSAGE value="fix: 调整 pageindex" />
+    <MESSAGE value="fix: 调整 判断题需要查询选项" />
+    <MESSAGE value="fix: 调整从session中获取用户信息" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: 调整从session中获取用户信息" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/exam/controller/StudentController.java</url>
+          <line>43</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/exam/service/QuestionServiceTest.java</url>
+          <line>83</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/exam/service/QuestionServiceTest.java</url>
+          <line>92</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/exam/service/QuestionServiceTest.java</url>
+          <line>123</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/main/resources/static/js/login.js</url>
+          <line>156</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/main/resources/static/js/login.js</url>
+          <line>102</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/main/resources/static/js/login.js</url>
+          <line>158</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

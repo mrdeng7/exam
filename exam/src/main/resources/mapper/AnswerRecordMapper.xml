@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.exam.dao.AnswerRecordDao">
+
+    <select id="queryKpsErrorRate" resultType="com.exam.entity.ErrorRateEntity">
+        SELECT kps_id as kpsId,
+               SUM(CASE WHEN correct THEN 0 ELSE 1 END) AS errorCount, -- 计算每个知识点上的错误数量
+               COUNT(kps_id) AS questionCount, -- 计算每个知识点上的题目总数
+               (SUM(CASE WHEN correct THEN 0 ELSE 1 END) * 100.0 / COUNT(kps_id)) AS errorRate -- 计算错误率，乘以100得到百分比
+        FROM answer_record_bean
+        WHERE student_id = #{studentId}
+        and question_type_id = #{questionTypeId}
+        GROUP BY kpsId
+        ORDER BY errorRate DESC, errorCount DESC -- 首先按错误率降序排列，如果错误率相同则按题目数量降序排列
+        limit #{topN}
+    </select>
+
+
+    <select id="lowFrequency" resultType="com.exam.entity.FrequencyEntity">
+        SELECT
+            kps_id as kpsId,
+            COUNT(*) AS frequency, -- 计算每个kps_id在目标student_id下的数量
+            (
+                COUNT(*) * 100.0 / (SELECT COUNT(*) FROM answer_record_bean WHERE student_id = 1) -- 计算总数
+                ) AS percentage -- 计算每个kps_id占总数的百分比
+        FROM
+            answer_record_bean
+        WHERE
+            student_id = #{studentId} -- 替换为实际的学生ID
+        GROUP BY
+            kps_id
+        ORDER BY
+            frequency ASC
+        limit #{topN}
+    </select>
+    <select id="queryWrongModuleAndKps" resultType="com.exam.po.AnswerRecordBean">
+        SELECT *
+        FROM `answer_record_bean`
+                 WHERE correct = 0 /*or correct is null*/
+                 GROUP BY module_id, kps_id, question_type_id
+    </select>
+</mapper>

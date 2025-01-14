@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.exam.dao.QuestionDao">
+
+    <select id="randomQueryQuestionInfo" resultType="com.exam.po.QuestionBean">
+        SELECT *
+        FROM question
+        <where>
+            <if test="questionTypeId != null">
+                and question_type_id = #{questionTypeId}
+            </if>
+            <if test="moduleId != null">
+                and module_id = #{moduleId}
+            </if>
+            <if test="kpsId != null">
+                and kps_id = #{kpsId}
+            </if>
+        </where>
+        ORDER BY RAND() limit #{topN}
+    </select>
+
+    <select id="batchRandomQueryQuestionInfo" resultType="com.exam.po.QuestionBean">
+        SELECT *
+        FROM question
+        <where>
+            <if test="questionTypeId != null">
+                and question_type_id = #{questionTypeId}
+            </if>
+            <if test="moduleIds != null">
+                and module_id in
+                    <foreach collection="moduleIds" separator="," item="moduleId" open="(" close=")">
+                        #{moduleId}
+                    </foreach>
+            </if>
+            <if test="kpsIds != null">
+                and kps_id in
+                <foreach collection="kpsIds" separator="," item="kpsId" open="(" close=")">
+                    #{kpsId}
+                </foreach>
+            </if>
+        </where>
+        ORDER BY RAND() limit #{topN}
+    </select>
+
+
+    <sql id="selectRandomQuestion">
+        (SELECT * FROM question WHERE module_id = #{moduleId} and question_type_id = #{questionTypeId} ORDER BY RAND() LIMIT #{topN})
+    </sql>
+
+
+    <select id="randomQueryQuestionInfoByModuleIds" resultType="com.exam.po.QuestionBean">
+        <foreach collection="moduleIds" item="moduleId" separator="UNION ALL">
+            <include refid="selectRandomQuestion">
+                <property name="moduleId" value="${moduleId}" />
+                <property name="topN" value="${topN}" />
+                <property name="questionTypeId" value="${questionTypeId" />
+            </include>
+        </foreach>
+    </select>
+</mapper>
